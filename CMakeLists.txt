@@ -32,6 +32,7 @@ function(add_func type func)
     )
 endfunction(add_func)
 
+
 add_func(std transform)
 add_func(mine print)
 
