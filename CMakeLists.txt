@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENTIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 message(STATUS "CMAKE_EXPORT_COMPILE_COMMANDS: ${CMAKE_EXPORT_COMPILE_COMMANDS}")
 message(STATUS "CMAKE_TOOLCHAIN_FILE: ${CMAKE_TOOLCHAIN_FILE}")
@@ -19,14 +21,20 @@ endif()
 
 find_package(Catch2 3 REQUIRED)
 
-function(add_std_func func)
-    add_executable(std-${func} ${PROJECT_SOURCE_DIR}/src/std/${func}.cpp)
-    target_link_libraries(std-${func} PRIVATE Catch2::Catch2WithMain)
-endfunction(add_std_func)
+function(add_func type func)
+    add_executable(${func} ${PROJECT_SOURCE_DIR}/src/${type}/${func}.cpp)
+    target_link_libraries(${func} PRIVATE Catch2::Catch2WithMain)
+    add_custom_command(
+      TARGET ${func}
+      POST_BUILD
+      COMMAND ${CMAKE_BINARY_DIR}/bin/${func}
+      COMMENT "Running ${func}"
+    )
+endfunction(add_func)
 
-function(add_mine_func func)
-    add_executable(${func} ${PROJECT_SOURCE_DIR}/src/mine/${func}.cpp)
-    target_link_libraries(mine-${func} PRIVATE Catch2::Catch2WithMain)
-endfunction(add_mine_func)
+add_func(std transform)
+add_func(mine print)
 
-add_std_func(transform)
+
+
+
