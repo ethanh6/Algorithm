@@ -35,6 +35,7 @@ endfunction(add_func)
 
 add_func(std transform)
 add_func(mine print)
+add_func(string find_first_of)
 
 
 
