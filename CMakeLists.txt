@@ -38,5 +38,6 @@ add_func(std lower_bound_upper_bound)
 
 add_func(mine print)
 add_func(mine dfs)
+add_func(mine bfs)
 
 add_func(string find_first_of)
