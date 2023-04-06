@@ -33,15 +33,15 @@ public:
       int u = q.front();
       q.pop();
 
+      // skip any visited nodes
       if (!visited[u]) {
         visited[u] = true;
 
         // process the node
         result.push_back(u);
 
-        // push all the unvisited neighbors to the stack
+        // push all neighbors to the queue
         for (int v : graph.adj[u])
-          if (!visited[v])
             q.push(v);
       }
     }

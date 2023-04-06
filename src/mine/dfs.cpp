@@ -33,15 +33,15 @@ public:
       int u = stk.top();
       stk.pop();
 
+      // skip any visited nodes
       if (!visited[u]) {
         visited[u] = true;
 
         // process the node
         result.push_back(u);
 
-        // push all the unvisited neighbors to the stack
+        // push all neighbors to the stack
         for (int v : graph.adj[u])
-          if (!visited[v])
             stk.push(v);
       }
     }
