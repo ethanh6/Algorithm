@@ -36,6 +36,7 @@ endfunction(add_func)
 add_func(std transform)
 add_func(mine print)
 add_func(string find_first_of)
+add_func(std lower_bound_upper_bound)
 
 
 
