@@ -42,3 +42,4 @@ add_func(mine bfs)
 add_func(mine erase_remove_idiom)
 
 add_func(string find_first_of)
+add_func(string substr)
